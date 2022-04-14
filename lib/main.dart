@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nectar_ui_ux/screen/welcome_screen/welcome_screen.dart';
+import 'package:nectar_ui_ux/screens/welcome_screen/welcome_screen.dart';
 
 
 void main() {
