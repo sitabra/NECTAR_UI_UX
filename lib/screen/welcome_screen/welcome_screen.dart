@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_ui_ux/screens/registration_screen/registration_screen.dart';
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({Key? key}) : super(key: key);
 
@@ -53,7 +54,13 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       height: 20,
                     ),
                     ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const RegistrationScreen(),
+                              ));
+                        },
                         child: Text("Get Started"),
                       style: ElevatedButton.styleFrom(
                           primary: Colors.greenAccent.shade400,
