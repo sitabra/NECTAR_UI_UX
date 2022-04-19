@@ -23,9 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   colorFilter:
                   ColorFilter.mode(Colors.black.withOpacity(0.85),
                       BlendMode.dstATop),
-                  image: new NetworkImage(
-                    'https://assets.gqindia.com/photos/6070617423780a7fa9a3ec07/master/pass/Online%20grocery%20services.jpeg',
-                  ),
+                  image: AssetImage('assets/image/image1.jpg'),
                 ),
               ),
             ),
