@@ -62,118 +62,141 @@ class _PhoneLogInScreenState extends State<PhoneLogInScreen> {
   }
 
   getMobileFormWidget(context) {
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            children: [
-              Text("Enter your mobile number",
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-              ),),
-            ],
-          ),
-        ),
-        Row(
-          children: [
-            Expanded(
-              child: CountryCodePicker(
-                initialSelection: 'IN',
-                showCountryOnly: false,
-                showFlag: true,
-                showFlagDialog: true,
-                showFlagMain: true,
-                favorite: ['+91','IN'],
-                alignLeft: true,
-              ),
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Row(
+              children: [
+                Text("Enter your mobile number",
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                ),),
+              ],
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 15),
-                child: TextField(
-                  controller: phoneController,
-                  decoration: InputDecoration(
-                    hintText: "Phone Number",
-                  ),
-                  keyboardType: TextInputType.phone,
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Row(
+            children: [
+              Expanded(
+                child: CountryCodePicker(
+                  initialSelection: 'IN',
+                  showCountryOnly: false,
+                  showFlag: true,
+                  showFlagDialog: true,
+                  showFlagMain: true,
+                  favorite: ['+91','IN'],
+                  alignLeft: true,
                 ),
               ),
-            ),
-          ],
-        ),
-        FloatingActionButton(
-          backgroundColor: Colors.green,
-          child: Icon(
-              Icons.arrow_forward_ios_outlined),
-          onPressed: () async {
-
-            setState(() {
-              showLoading =  true;
-            });
-
-           await _auth.verifyPhoneNumber(
-                phoneNumber: phoneController.text,
-                verificationCompleted: (phoneAuthCredential) async {
-                  setState(() {
-                    showLoading = false;
-                  });
-                  //signInWithPhoneAuthCredential(phoneAuthCredential);
-                },
-                verificationFailed: (verificationFailed) async {
-                  setState(() {
-                    showLoading = false;
-                  });
-                  // _scaffoldKey.currentState?.showSnackBar(SnackBar(
-                  //     content: Text(verificationFailed.message)));
-                },
-                codeSent: (verificationId, resendingToken) async {
-                  setState(() {
-                    showLoading = false;
-                    currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
-                    this.verificationId = verificationId;
-                  });
-                },
-                codeAutoRetrievalTimeout: (verificationId) async {
-
-                },
-            );
-          },
-
-        )
-      ],
-    );
-  }
-
-  getOtpFormWidget(context) {
-    return Column(
-      children: [
-        //Text("Enter your 6-digit code"),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 15),
-          child: TextField(
-            controller: otpController,
-            decoration: InputDecoration(
-              hintText: "Enter OTP",
-            ),
-            keyboardType: TextInputType.phone,
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 15),
+                  child: TextField(
+                    controller: phoneController,
+                    decoration: InputDecoration(
+                      hintText: "Phone Number",
+                    ),
+                    keyboardType: TextInputType.phone,
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
-        SizedBox(
-          height: 20,
-        ),
-        FloatingActionButton(
+          SizedBox(
+            height: 20,
+          ),
+          FloatingActionButton(
             backgroundColor: Colors.green,
             child: Icon(
                 Icons.arrow_forward_ios_outlined),
             onPressed: () async {
-              PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
-                  verificationId: verificationId,
-                  smsCode: otpController.text);
-              signInWithPhoneAuthCredential(phoneAuthCredential);
-            })
-      ],
+
+              setState(() {
+                showLoading =  true;
+              });
+
+             await _auth.verifyPhoneNumber(
+                  phoneNumber: phoneController.text,
+                  verificationCompleted: (phoneAuthCredential) async {
+                    setState(() {
+                      showLoading = false;
+                    });
+                    //signInWithPhoneAuthCredential(phoneAuthCredential);
+                  },
+                  verificationFailed: (verificationFailed) async {
+                    setState(() {
+                      showLoading = false;
+                    });
+                    // _scaffoldKey.currentState?.showSnackBar(SnackBar(
+                    //     content: Text(verificationFailed.message)));
+                  },
+                  codeSent: (verificationId, resendingToken) async {
+                    setState(() {
+                      showLoading = false;
+                      currentState = MobileVerificationState.SHOW_OTP_FORM_STATE;
+                      this.verificationId = verificationId;
+                    });
+                  },
+                  codeAutoRetrievalTimeout: (verificationId) async {
+
+                  },
+              );
+            },
+
+          )
+        ],
+      ),
+    );
+  }
+
+  getOtpFormWidget(context) {
+    return Container(
+      color: Colors.white,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              children: [
+                Text("Enter your 6-digit code",
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                  ),),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: TextField(
+              controller: otpController,
+              decoration: InputDecoration(
+                hintText: "Enter OTP",
+              ),
+              keyboardType: TextInputType.phone,
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          FloatingActionButton(
+              backgroundColor: Colors.green,
+              child: Icon(
+                  Icons.arrow_forward_ios_outlined),
+              onPressed: () async {
+                PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.credential(
+                    verificationId: verificationId,
+                    smsCode: otpController.text);
+                signInWithPhoneAuthCredential(phoneAuthCredential);
+              })
+        ],
+      ),
     );
   }
 
@@ -182,6 +205,7 @@ class _PhoneLogInScreenState extends State<PhoneLogInScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0,
