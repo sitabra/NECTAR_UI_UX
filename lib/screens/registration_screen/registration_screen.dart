@@ -1,6 +1,7 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_ui_ux/screens/email_log_in_screen/email_log_in_screen.dart';
 import 'package:nectar_ui_ux/screens/phone_log_in_screen/phone_log_in_screen.dart';
 class RegistrationScreen extends StatefulWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -70,7 +71,13 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 margin: EdgeInsets.all(10),
                 child: ElevatedButton.icon(
                   icon: Icon(Icons.mail),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const EmailLogInScreen(),
+                        ));
+                  },
                   label: Text("Sign In with Email"),
                   style: ElevatedButton.styleFrom(
                     primary: Colors.blueAccent,

@@ -1,8 +1,9 @@
 import 'package:country_code_picker/country_code_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:nectar_ui_ux/screens/home_screen/home_screen.dart';
+import 'package:nectar_ui_ux/screens/bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:nectar_ui_ux/screens/registration_screen/registration_screen.dart';
+import 'package:nectar_ui_ux/screens/shop_screen/shop_screen.dart';
 
 enum MobileVerificationState {
   SHOW_MOBILE_FORM_STATE,
@@ -47,7 +48,7 @@ class _PhoneLogInScreenState extends State<PhoneLogInScreen> {
         Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => const HomeScreen(),
+              builder: (context) => BottomNavigationScreen(),
             ));
       }
 
@@ -194,6 +195,11 @@ class _PhoneLogInScreenState extends State<PhoneLogInScreen> {
                     verificationId: verificationId,
                     smsCode: otpController.text);
                 signInWithPhoneAuthCredential(phoneAuthCredential);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BottomNavigationScreen(),
+                    ));
               })
         ],
       ),
