@@ -70,15 +70,16 @@ class _AccountScreenState extends State<AccountScreen> {
           children: [
             ListView.separated(
               itemBuilder: (BuildContext, index){
-                return ListTile(
-                  leading: Container(
-                    height: 20,
-                      width: 20,
-                      child: Image.network(leadingIcons[index],fit: BoxFit.contain,)),
-                  title: Text(tileName[index]),
-                  trailing: IconButton(icon: Icon(Icons.arrow_forward_ios_outlined),
-                    onPressed: () {  },
-                ));
+                return InkWell(
+                  onTap: () {},
+                  child: ListTile(
+                    leading: Container(
+                      height: 20,
+                        width: 20,
+                        child: Image.network(leadingIcons[index],fit: BoxFit.contain,)),
+                    title: Text(tileName[index]),
+                    trailing: Icon(Icons.arrow_forward_ios_outlined)),
+                );
               },
               separatorBuilder: (BuildContext,index)
               {

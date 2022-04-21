@@ -31,6 +31,14 @@ class _ShopScreenState extends State<ShopScreen> {
               height: 50,
                 width: 50,
                 child: Image.asset('assets/image/pngcarrot.png', fit: BoxFit.fill,)),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(Icons.location_on),
+                Text("Dhaka,"),
+                Text("Banassre"),
+              ],
+            ),
             Padding(
               padding: const EdgeInsets.all(12.0),
               child: Container(
