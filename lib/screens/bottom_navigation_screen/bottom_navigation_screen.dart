@@ -49,7 +49,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
                   label: 'Favourites'),
               NavigationDestination(
                   icon: Icon(Icons.person_outline),
-                  label: 'My Profile'),
+                  label: 'Account'),
             ]
         ),
         body: screens[index]
