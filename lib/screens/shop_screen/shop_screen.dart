@@ -1,5 +1,8 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_ui_ux/helper/utils.dart';
+
+import '../../models/category.dart';
 
 class ShopScreen extends StatefulWidget {
   const ShopScreen({Key? key}) : super(key: key);
@@ -18,7 +21,10 @@ class _ShopScreenState extends State<ShopScreen> {
     'https://st2.depositphotos.com/7341970/11081/v/950/depositphotos_110818802-stock-illustration-grocery-shopping-discount-banner.jpg',
   ];
 
+
   int _currentIndex = 0;
+
+  List<Category> categories = Utils.getMockedCategories();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +36,8 @@ class _ShopScreenState extends State<ShopScreen> {
             Container(
               height: 50,
                 width: 50,
-                child: Image.asset('assets/image/pngcarrot.png', fit: BoxFit.fill,)),
+                child: Image.asset('assets/image/pngcarrot.png', fit: BoxFit.fill,)
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -56,66 +63,63 @@ class _ShopScreenState extends State<ShopScreen> {
                 ),
               ),
             ),
-            Container(
-              width: double.infinity,
-              height: 100,
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  autoPlay: true,
-                  // enlargeCenterPage: true,
-                  //scrollDirection: Axis.vertical,
-                  onPageChanged: (index, reason) {
-                    setState(
-                          () {
-                        _currentIndex = index;
+                Stack(
+                  children: [
+                    Container(
+                    width: double.infinity,
+                     height: 100,
+                     child: CarouselSlider(
+                      options: CarouselOptions(
+                      autoPlay: true,
+                      onPageChanged: (index, reason) {
+                        setState(
+                              () {
+                            _currentIndex = index;
+                          },
+                        );
                       },
-                    );
-                  },
-                ),
-                items: imagesList
-                    .map(
-                      (item) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 5),
-                    child: Stack(
-                      children: [
-                        Container(
-                          height: 100,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.network(
-                              item,
-                              fit: BoxFit.fitWidth,
-                              width: double.infinity,
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                          top: 75,
-                          left: 100,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: imagesList.map((urlOfItem) {
-                              int index = imagesList.indexOf(urlOfItem);
-                              return Container(
-                                width: 10.0,
-                                height: 10.0,
-                                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: _currentIndex == index
-                                      ? Color.fromRGBO(0, 0, 0, 0.8)
-                                      : Color.fromRGBO(0, 0, 0, 0.3),
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                        )
-                      ],
                     ),
+                    items: imagesList.map((item) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 5),
+                        child:
+                            Container(
+                              height: 100,
+                              child: ClipRRect(
+                                borderRadius: BorderRadius.circular(10),
+                                child: Image.network(
+                                  item,
+                                  fit: BoxFit.fitWidth,
+                                  width: double.infinity,
+                                ),
+                              ),
+                            ),
+                      ),
+                    ).toList(),
                   ),
-                ).toList(),
-              ),
-            ),
+                 ),
+                    Positioned(
+                      top: 75,
+                      left: 150,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: imagesList.map((urlOfItem) {
+                          int index = imagesList.indexOf(urlOfItem);
+                          return Container(
+                            width: 10.0,
+                            height: 10.0,
+                            margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 2.0),
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: _currentIndex == index
+                                  ? Color.fromRGBO(0, 0, 0, 0.8)
+                                  : Color.fromRGBO(0, 0, 0, 0.3),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    )
+                  ]
+                ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 5),
               child: Row(
@@ -127,7 +131,47 @@ class _ShopScreenState extends State<ShopScreen> {
                       child: Text("See all"))
                 ],
               ),
-            )
+            ),
+            Container(
+              height: 200,
+              child: ListView.builder(
+                itemCount: categories.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                return Container(
+                            margin: EdgeInsets.all(10),
+                            width: 150,
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black.withOpacity(0.1)),
+                              borderRadius: BorderRadius.circular(10),
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  child: Image.asset(categories[index].imgName),
+                                ),
+                                Text(categories[index].name),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Text(categories[index].price),
+                                    FloatingActionButton(
+                                        backgroundColor: Colors.green,
+                                        mini: true,
+                                        onPressed: () {},
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(16)
+                                        ),
+                                      child: Icon(Icons.add),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          );
+              }
+              )
+            ),
           ],
         ),
       ),
