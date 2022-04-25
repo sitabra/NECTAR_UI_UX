@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_ui_ux/helper/utils.dart';
+import 'package:nectar_ui_ux/screens/grocery_items-details/grocery_items_details.dart';
 
 import '../../models/category.dart';
 
@@ -128,12 +129,12 @@ class _ShopScreenState extends State<ShopScreen> {
                   Text("Exclusive Offer", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
                   TextButton(
                       onPressed: () {},
-                      child: Text("See all"))
+                      child: Text("See all",style: TextStyle(color: Colors.green),))
                 ],
               ),
             ),
             Container(
-              height: 200,
+              height: 270,
               child: ListView.builder(
                 itemCount: categories.length,
                   scrollDirection: Axis.horizontal,
@@ -146,16 +147,34 @@ class _ShopScreenState extends State<ShopScreen> {
                               borderRadius: BorderRadius.circular(10),
                             ),
                             child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Container(
-                                  child: Image.asset(categories[index].imgName),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: Container(
+                                    height: 130,
+                                    // width: 150,
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(10),
+                                        child: Image.asset(categories[index].imgName, fit: BoxFit.cover,)
+                                    ),
+                                  ),
                                 ),
-                                Text(categories[index].name),
+                                Padding(
+                                  padding: const EdgeInsets.all(5.0),
+                                  child: Column(
+                                    children: [
+                                      Text(categories[index].name),
+                                      Text(categories[index].description, style: TextStyle(color: Colors.grey),)
+                                    ],
+                                  ),
+                                ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Text(categories[index].price),
+                                    Text("\$" + categories[index].price),
                                     FloatingActionButton(
+                                      elevation: 0,
                                         backgroundColor: Colors.green,
                                         mini: true,
                                         onPressed: () {},
@@ -172,6 +191,203 @@ class _ShopScreenState extends State<ShopScreen> {
               }
               )
             ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Best Selling", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text("See all", style: TextStyle(color: Colors.green),))
+                ],
+              ),
+            ),
+            Container(
+                height: 270,
+                child: ListView.builder(
+                    itemCount: categories.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Container(
+                          margin: EdgeInsets.all(10),
+                          width: 150,
+                          decoration: BoxDecoration(
+                            border: Border.all(color: Colors.black.withOpacity(0.1)),
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Container(
+                                  height: 140,
+                                  width: 150,
+                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                      child: Image.network(categories[index].vegImg, fit: BoxFit.cover,)),
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.all(5.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(categories[index].vegName),
+                                    Text(categories[index].vegDescription, style: TextStyle(color: Colors.grey),)
+                                  ],
+                                ),
+                              ),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text("\$" + categories[index].vegPrice),
+                                  FloatingActionButton(
+                                    elevation: 0,
+                                    backgroundColor: Colors.green,
+                                    mini: true,
+                                    onPressed: () {},
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(16)
+                                    ),
+                                    child: Icon(Icons.add),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          )
+                      );
+                    }
+                )
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Groceries", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600),),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text("See all", style: TextStyle(color: Colors.green),))
+                ],
+              ),
+            ),
+            Column(
+              children: [
+                Container(
+                    height: 90,
+                    child: ListView.builder(
+                        itemCount: categories.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return InkWell(
+                            onTap: () {
+                              Navigator.of(context).push(MaterialPageRoute(builder: (context)=>
+                                  GroceryItemsDetails(category: categories[index],)));
+                            },
+                            child: Container(
+                                margin: EdgeInsets.all(10),
+                                width: 200,
+                                decoration: BoxDecoration(
+                                  color: Color(int.parse(categories[index].colorCode)),
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Container(
+                                      margin: EdgeInsets.all(2),
+                                      height: 65,
+                                      width: 150,
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(10)),
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Padding(
+                                                padding: const EdgeInsets.all(8.0),
+                                                child: Container(
+                                                  width: 70,
+                                                    child: ClipRRect(
+                                                        borderRadius: BorderRadius.circular(10),
+                                                        child: Image.network(categories[index].imgGrocery, fit: BoxFit.cover,))),
+                                              ),
+                                              Text(categories[index].nameGrocery, style: TextStyle(fontWeight: FontWeight.bold),),
+                                            ],
+                                          )),
+                                    ),
+                                  ],
+                                )
+                            ),
+                          );
+                        }
+                    )
+                ),
+                Container(
+                    height: 270,
+                    child: ListView.builder(
+                        itemCount: categories.length,
+                        scrollDirection: Axis.horizontal,
+                        itemBuilder: (context, index) {
+                          return Container(
+                              margin: EdgeInsets.all(10),
+                              width: 150,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: Colors.black.withOpacity(0.1)),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Container(
+                                      height: 140,
+                                      width: 150,
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10)),
+                                      child: ClipRRect(
+                                          borderRadius: BorderRadius.circular(10),
+                                          child: Image.network(categories[index].meatImg, fit: BoxFit.cover,)),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.all(5.0),
+                                    child: Column(
+                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                      children: [
+                                        Text(categories[index].meatName),
+                                        Text(categories[index].meatDesc, style: TextStyle(color: Colors.grey),)
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text("\$" + categories[index].meatPrice),
+                                      FloatingActionButton(
+                                        elevation: 0,
+                                        backgroundColor: Colors.green,
+                                        mini: true,
+                                        onPressed: () {},
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(16)
+                                        ),
+                                        child: Icon(Icons.add),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              )
+                          );
+                        }
+                    )
+                ),
+              ],
+            )
           ],
         ),
       ),
