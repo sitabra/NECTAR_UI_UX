@@ -21,7 +21,7 @@ class Utils{
         nameGrocery: 'Pulses',
         imgGrocery: 'https://goqii.com/blog/wp-content/uploads/Why-Pulses-Are-Good-For-You.jpg',
         colorCode: '0XFFF8BBD0',
-        descriptionGrocery: 'Pulses',
+        descriptionGrocery: 'Pulses are the edible seeds of plants in the legume family. Pulses grow in pods and come in a variety of shapes, sizes and colors. The United Nations Food and Agriculture Organization (FAO) recognizes 11 types of pulses: dry beans, dry broad beans, dry peas, chickpeas, cow peas, pigeon peas, lentils, Bambara beans, vetches, lupins and pulses nes (not elsewhere specified – minor pulses that don’t fall into one of the other categories).',
       ),
       Category(
           name: "Apple",
@@ -40,7 +40,7 @@ class Utils{
         nameGrocery: 'Rice',
         imgGrocery: 'https://freshon.in/wp-content/uploads/2020/10/yXVnjEL3MW-1-scaled.jpg',
         colorCode: '0xFFEF9A9A',
-        descriptionGrocery: 'Rice',
+        descriptionGrocery: 'Rice is the seed of the grass species Oryza sativa or less commonly Oryza glaberrima. The name wild rice is usually used for species of the genera Zizania and Porteresia, both wild and domesticated, although the term may also be used for primitive or uncultivated varieties of Oryza.',
       ),
       Category(
           name: "Banana",
@@ -59,7 +59,7 @@ class Utils{
         nameGrocery: 'Spices',
         imgGrocery: 'https://assets.epicurious.com/photos/5ea734df987eaf00089985db/16:9/w_2560%2Cc_limit/GroundWholeSpices_HERO_041620_6616.jpg',
         colorCode: '0xFFFFCCBC',
-        descriptionGrocery: 'Spices',
+        descriptionGrocery: 'A spice is a seed, fruit, root, bark, or other plant substance primarily used for flavoring or coloring food. Spices are distinguished from herbs, which are the leaves, flowers, or stems of plants used for flavoring or as a garnish.',
       ),
       Category(
           name: "Orange",
@@ -78,7 +78,7 @@ class Utils{
         nameGrocery: 'Dairy',
         imgGrocery: 'https://simplyfresh.info/wp-content/uploads/2015/09/simply-handlingdairy.jpg',
         colorCode: '0xFFFFE0B2',
-        descriptionGrocery: 'Diary',
+        descriptionGrocery: 'Dairy products or milk products, also known as lacticinia, are food products made from milk. The most common dairy animals are cow, water buffalo, nanny goat, and ewe. Dairy products include common grocery store food items in the Western world such as yogurt, cheese and butter.',
       ),
     ];
   }

@@ -37,7 +37,7 @@ class _BottomNavigationScreenState extends State<BottomNavigationScreen> {
             destinations: const [
               NavigationDestination(
                   icon: Icon(Icons.house),
-                  label: 'Shop'),
+                  label: 'Shop',),
               NavigationDestination(
                   icon: Icon(Icons.search),
                   label: 'Explore'),
