@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_ui_ux/screens/bottom_navigation_screen/bottom_navigation_screen.dart';
 import 'package:nectar_ui_ux/screens/welcome_screen/welcome_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 
@@ -18,7 +19,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
       ),
       debugShowCheckedModeBanner: false,
