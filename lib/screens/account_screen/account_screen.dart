@@ -104,7 +104,7 @@ class _AccountScreenState extends State<AccountScreen> {
                     elevation: 0,
                     primary: Colors.black.withOpacity(0.1),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      borderRadius: BorderRadius.circular(20.0),
                     ),
                   ),
                     onPressed: () async {
