@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar_ui_ux/widgets/custom_Float_action_button.dart';
 
 import '../../models/items.dart';
-import '../../widgets/custom_textfeild.dart';
+import '../../widgets/custom_textfield.dart';
 
 class ExploreDetailsScreen extends StatefulWidget {
   final Items items;

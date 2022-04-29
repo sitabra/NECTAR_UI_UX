@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nectar_ui_ux/helper/second_utils.dart';
 import 'package:nectar_ui_ux/models/items.dart';
-import 'package:nectar_ui_ux/screens/explore_screen/explore_deatils_screen.dart';
-import 'package:nectar_ui_ux/widgets/custom_textfeild.dart';
+import 'package:nectar_ui_ux/screens/explore_screen/explore_details_screen.dart';
+import 'package:nectar_ui_ux/widgets/custom_textfield.dart';
 
 import '../../models/category.dart';
 

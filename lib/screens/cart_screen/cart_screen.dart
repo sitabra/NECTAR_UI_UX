@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_ui_ux/widgets/custom_Float_action_button.dart';
 class CartScreen extends StatefulWidget {
