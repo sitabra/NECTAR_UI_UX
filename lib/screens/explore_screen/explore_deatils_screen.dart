@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:nectar_ui_ux/widgets/custom_Float_action_button.dart';
 
 import '../../models/items.dart';
+import '../../widgets/custom_textfeild.dart';
 
 class ExploreDetailsScreen extends StatefulWidget {
   final Items items;
@@ -35,6 +37,7 @@ class _ExploreDetailsScreenState extends State<ExploreDetailsScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            CustomTextField(),
             GridView.builder(
                 scrollDirection: Axis.vertical,
                 shrinkWrap: true,
@@ -83,16 +86,7 @@ class _ExploreDetailsScreenState extends State<ExploreDetailsScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
                                 Text("\$" + widget.items.subItems[index].price),
-                                FloatingActionButton(
-                                  elevation: 0,
-                                  backgroundColor: Colors.green,
-                                  mini: true,
-                                  onPressed: () {},
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16)
-                                  ),
-                                  child: Icon(Icons.add),
-                                ),
+                                CustomFloatActionButton()
                               ],
                             ),
                           ],

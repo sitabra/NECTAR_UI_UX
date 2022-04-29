@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:nectar_ui_ux/widgets/custom_Float_action_button.dart';
 class CartScreen extends StatefulWidget {
   const CartScreen({Key? key}) : super(key: key);
 
@@ -60,7 +61,7 @@ class _CartScreenState extends State<CartScreen> {
       appBar: AppBar(
         backgroundColor: Colors.white,
         elevation: 0,
-        title: Center(child: Text("My Cart", style: TextStyle(color: Colors.black),)),
+        title: Text("My Cart", style: TextStyle(color: Colors.black),),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -117,16 +118,7 @@ class _CartScreenState extends State<CartScreen> {
                                       padding: const EdgeInsets.all(5.0),
                                       child: Text(itemCount[index]),
                                     ),
-                                    FloatingActionButton(
-                                      elevation: 0,
-                                      backgroundColor: Colors.white60,
-                                      mini: true,
-                                      onPressed: () {},
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(16)
-                                      ),
-                                      child: Icon(Icons.add, color: Colors.green,),
-                                    ),
+                                    CustomFloatActionButton()
                                   ],
                                 ),
                               ),

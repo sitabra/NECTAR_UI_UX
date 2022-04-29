@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nectar_ui_ux/helper/second_utils.dart';
 import 'package:nectar_ui_ux/models/items.dart';
 import 'package:nectar_ui_ux/screens/explore_screen/explore_deatils_screen.dart';
+import 'package:nectar_ui_ux/widgets/custom_textfeild.dart';
 
 import '../../models/category.dart';
 
@@ -27,24 +28,7 @@ class _ExploreScreenState extends State<ExploreScreen> {
               padding: const EdgeInsets.all(8.0),
               child: Text("Find Products", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
             ),
-            Padding(
-              padding: const EdgeInsets.all(12.0),
-              child: Container(
-                height: 50,
-                child: TextField(
-                  // onChanged: searchItems,
-                  decoration: InputDecoration(
-                      hintText: 'Search Store',
-                      prefixIcon: const Icon(Icons.search,color: Colors.black,),
-                      filled: true,
-                      fillColor: Colors.grey.shade300,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none,
-                      )),
-                ),
-              ),
-            ),
+            CustomTextField(),
             GridView.builder(
               scrollDirection: Axis.vertical,
                 shrinkWrap: true,

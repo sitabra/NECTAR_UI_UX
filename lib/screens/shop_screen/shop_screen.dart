@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:nectar_ui_ux/helper/utils.dart';
 import 'package:nectar_ui_ux/screens/grocery_items-details/grocery_items_details.dart';
+import 'package:nectar_ui_ux/widgets/custom_Float_action_button.dart';
 
 import '../../models/category.dart';
 
@@ -165,24 +166,17 @@ class _ShopScreenState extends State<ShopScreen> {
                                   child: Column(
                                     children: [
                                       Text(categories[index].name),
-                                      Text(categories[index].description, style: TextStyle(color: Colors.grey),)
-                                    ],
+                                    Text(categories[index].description,
+                                      style: TextStyle(color: Colors.grey),
+                                    )
+                                  ],
                                   ),
                                 ),
                                 Row(
                                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                   children: [
                                     Text("\$" + categories[index].price),
-                                    FloatingActionButton(
-                                      elevation: 0,
-                                        backgroundColor: Colors.green,
-                                        mini: true,
-                                        onPressed: () {},
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(16)
-                                        ),
-                                      child: Icon(Icons.add),
-                                    ),
+                                    CustomFloatActionButton(),
                                   ],
                                 ),
                               ],
@@ -244,16 +238,7 @@ class _ShopScreenState extends State<ShopScreen> {
                                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Text("\$" + categories[index].vegPrice),
-                                  FloatingActionButton(
-                                    elevation: 0,
-                                    backgroundColor: Colors.green,
-                                    mini: true,
-                                    onPressed: () {},
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(16)
-                                    ),
-                                    child: Icon(Icons.add),
-                                  ),
+                                  CustomFloatActionButton()
                                 ],
                               ),
                             ],
@@ -368,16 +353,7 @@ class _ShopScreenState extends State<ShopScreen> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text("\$" + categories[index].meatPrice),
-                                      FloatingActionButton(
-                                        elevation: 0,
-                                        backgroundColor: Colors.green,
-                                        mini: true,
-                                        onPressed: () {},
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(16)
-                                        ),
-                                        child: Icon(Icons.add),
-                                      ),
+                                      CustomFloatActionButton(),
                                     ],
                                   ),
                                 ],
